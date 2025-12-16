@@ -1,0 +1,32 @@
+.register-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--background) 0%, var(--muted) 100%);
+}
+
+.register-card {
+  width: 100%;
+  max-width: 28rem;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.register-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
