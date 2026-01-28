@@ -5,6 +5,10 @@ import App from './App.tsx'
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import { RegisterPage } from '@/pages/register/Register.tsx';
+import { LoginPage } from '@/pages/login/Login.tsx';
+import { ProductsPage } from '@/pages/products/Products.tsx';
+import { CartPage } from '@/pages/cart/Cart.tsx';
+import { CreateProducts } from '@/pages/products/CreateProducts.tsx';
 
 const router = createBrowserRouter([
     {
@@ -13,15 +17,23 @@ const router = createBrowserRouter([
         children: [
             {
                path: "login",
-                element: <div>Login Page</div>,
+                element: <LoginPage />,
             },
             {
                 path: "register",
                 element: <RegisterPage/>,
             },
             {
-                path: "shop",
-                element: <div>Shop Page</div>,
+                path: "products",
+                element: <ProductsPage />,
+            },
+            {
+                path: "cart",
+                element: <CartPage />,
+            },
+            {
+                path: "create-product",
+                element: <CreateProducts/>,
             }
         ]
             

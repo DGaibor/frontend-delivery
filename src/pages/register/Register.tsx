@@ -12,6 +12,8 @@ import { Form, FormField } from "@/components/Form";
 import { CustomButton } from "@/components/Button";
 import { UtensilsCrossed } from "lucide-react";
 import "./Register.css";
+import axios from 'axios';
+
 
 interface RegisterFormData {
   email: string;
@@ -30,6 +32,7 @@ interface FormErrors {
 }
 
 export const RegisterPage = () => {
+  const API_URL = import.meta.env.VITE_HOST;
   const [formData, setFormData] = useState<RegisterFormData>({
     email: "",
     password: "",
@@ -86,15 +89,26 @@ export const RegisterPage = () => {
 
     setIsLoading(true);
     try {
-      // TODO: Implement registration API call
       console.log("Register data:", formData);
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      
+      const response = await axios.post(`${API_URL}/users`,{
+        name: formData.firstname,
+        email: formData.email,
+        password: formData.password,
+        birthDate: formatBirthDate(formData.birthdate),
+      } )
+      console.log(response.data)
+      alert(response.data);
     } catch (error) {
-      console.error("Registration error:", error);
+      console.log("Registration error:", error);
+      alert("huvo un error durante el registro. Por favor, intenta de nuevo.");
     } finally {
       setIsLoading(false);
     }
   };
+  function formatBirthDate(date: string): string {
+    return new Date(`${date}T00:00:00.000Z`).toISOString();
+  }
 
   return (
     <div className="register-container">
